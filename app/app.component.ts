@@ -9,32 +9,36 @@ declare const alertify: any;
   selector: 'app',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
- 
+  
 })
 export class AppComponent implements OnInit {
   public settings: Ng2TreeSettings = {
     rootIsVisible: false
   };
 
+/*  public pls: TreeModel;
 
-  public ffs: TreeModel;
-
-  private lastFFSNodeId = 86;
-
-  @ViewChild('treeFFS') public treeFFS;
-
-
-  private static logEvent(e: NodeEvent, message: string): void {
-    console.log(e);
-    alertify.message(`${message}: ${e.node.value}`);
-  }
-
-  public ngOnInit(): void {
-    setTimeout(() => {
-      this.ffs = {
-    value: '/',
+public ffs: TreeModel = {value: 'hello im your bot, how can i help you?',
     id: 1,
     settings: {
+      leftMenu: true,
+      templates: {
+        leftMenu: '<i class="fa fa-navicon"></i>'
+      }
+    },
+    children: [
+          {value: 'Actobat3', id: 2, children: []},
+          {value: 'Complib', id: 3, children: []},
+          {value: 'Eudora', id: 4, children: []},
+        ],
+};*/
+
+  public ffs: TreeModel = {
+    value: 'Hi Combot crew, what is the problem today?',
+    id: 1,
+    settings: {
+      leftMenu: true,
+
       cssClasses: {
         expanded: 'fa fa-caret-down',
         collapsed: 'fa fa-caret-right',
@@ -42,113 +46,53 @@ export class AppComponent implements OnInit {
         leaf: 'fa'
       },
       templates: {
-        node: '<i class="fa fa-folder-o"></i>',
-        leaf: '<i class="fa fa-file-o"></i>'
+        node: '<i class="fa fa-question-circle-o"></i>',
+        leaf: '<i class="fa fa-plane"></i>'
       }
     },
     children: [
       {
-        value: 'bin',
+        value: 'I want to eat',
         id: 2,
+                settings: {
+                  templates: {
+                    leftMenu: '<i class="fa fa-navicon"></i>'
+                  }
+                },
         children: [
           {value: 'bash', id: 3},
           {value: 'umount', id: 4},
           {value: 'cp', id: 5},
-          {value: 'less', id: 6},
-          {value: 'rmdir', id: 7},
-          {value: 'touch', id: 8},
-          {value: 'chgrp', id: 9},
-          {value: 'chmod', id: 10},
-          {value: 'chown', id: 11},
-          {value: 'nano', id: 12}
         ],
         settings: {
           isCollapsedOnInit: true
         }
       },
       {
-        value: 'boot',
+        value: 'I want to sleep',
         id: 13,
         children: [
           {
-            value: 'grub',
+            value: 'Have you slept enough tonight?',
             id: 14,
             children: [
-              {value: 'fonts', id: 15},
-              {value: 'gfxblacklist.txt', id: 16},
-              {value: 'grub.cfg', id: 17},
-              {value: 'grubenv', id: 18},
-              {value: 'i386-pc', id: 19},
-              {value: 'locale', id: 20},
-              {value: 'unicode.pf2', id: 21}
+              {value: 'yes', id: 15,
+            children: [
+                          {value: 'You win Dekel"s star!', id: 412}
+                        ]},
+              {value: 'no', id: 16},
             ]
           },
           {
-            value: 'lost+found',
+            value: 'bla bla',
             id: 22,
             children: []
-          },
-          {value: 'abi-4.4.0-57-generic', id: 23},
-          {value: 'config-4.4.0-57-generic', id: 24},
-          {value: 'initrd.img-4.4.0-47-generic', id: 25},
-          {value: 'initrd.img-4.4.0-57-generic', id: 26},
-          {value: 'memtest86+.bin', id: 27},
-          {value: 'System.map-4.4.0-57-generic', id: 28},
-          {value: 'memtest86+.elf', id: 29},
-          {value: 'vmlinuz-4.4.0-57-generic', id: 30},
-          {value: 'memtest86+_multiboot.bin', id: 31}
-        ]
-      },
-      {
-        value: 'build-no-left-no-right-menus',
-        id: 32,
-        settings: {
-          leftMenu: false,
-          rightMenu: false
-        },
-        children: [
-          {
-            value: 'php5-left-menu',
-            id: 33,
-            settings: {
-              leftMenu: true
-            }
-          },
-          {
-            value: 'grails-left-menu',
-            id: 335,
-            settings: {
-              leftMenu: true
-            }
-          },
-          {
-            value: 'python-right-menu',
-            id: 333,
-            settings: {
-              rightMenu: true
-            }
           }
         ]
       },
-      {value: 'cdrom', id: 34, children: []},
-      {value: 'dev', id: 35, children: []},
+
       {
-        value: 'etc',
-        id: 36,
-        loadChildren: (callback) => {
-          console.log('callback function called to load etc`s children');
-          setTimeout(() => {
-            callback([
-              {value: 'apache2', id: 82, children: []},
-              {value: 'nginx', id: 83, children: []},
-              {value: 'dhcp', id: 84, children: []},
-              {value: 'dpkg', id: 85, children: []}
-            ]);
-          });
-        }
-      },
-      {
-        value: 'home',
+        value: 'I wanna go home...',
         id: 37,
         children: [
           {
@@ -208,7 +152,6 @@ export class AppComponent implements OnInit {
               leftMenu: true
             },
             children: [
-              {value: 'Documents', id: 55, children: []},
               {
                 value: 'Downloads - custom left menu template',
                 id: 56,
@@ -233,8 +176,69 @@ export class AppComponent implements OnInit {
             ]
           }
         ]
-      },
+      }
     ]
+  };
+  private lastFFSNodeId = 86;
+
+  @ViewChild('treeFFS') public treeFFS;
+
+  public icons: TreeModel = {
+    value: 'Icons',
+    children: [
+      {
+        value: 'Web Application Icons',
+        children: [
+          {value: 'calendar', icon: 'fa-calendar' },
+          {value: 'download', icon: 'fa-download' },
+          {value: 'group', icon: 'fa-group' },
+          {value: 'print', icon: 'fa-print' }
+        ]
+      },
+      {
+        value: 'Hand Icons',
+        children: [
+          {value: 'pointer', icon: 'fa-hand-pointer-o' },
+          {value: 'grab', icon: 'fa-hand-rock-o' },
+          {value: 'thumbs up', icon: 'fa-thumbs-o-up ' },
+          {value: 'thumbs down', icon: 'fa-thumbs-o-down' }
+        ]
+      },
+      {
+        value: 'File Type Icons',
+        children: [
+          {value: 'file', icon: 'fa-file-o' },
+          {value: 'audio', icon: 'fa-file-audio-o' },
+          {value: 'movie', icon: 'fa-file-movie-o ' },
+          {value: 'archive', icon: 'fa-file-zip-o' }
+        ]
+      },
+   ]
+  };
+
+  private static logEvent(e: NodeEvent, message: string): void {
+    console.log(e);
+    alertify.message(`${message}: ${e.node.value}`);
+  }
+
+  public ngOnInit(): void {
+    setTimeout(() => {
+      this.pls = {
+        value: 'hello im your bot, how can i help you?',
+                id: 1,
+                settings: {
+                  templates: {
+                    leftMenu: '<i class="fa fa-navicon"></i>'
+                  }
+                },
+                children: [
+                  {value: 'Actobat3', id: 2},
+                  {value: 'Complib', id: 3},
+                  {value: 'Eudora', id: 4},
+                  {value: 'java', id: 5},
+                  {value: 'drivers', id: 6},
+                  {value: 'kathy', id: 7}
+                ] 
       };
     }, 2000);
   }
@@ -286,17 +290,8 @@ export class AppComponent implements OnInit {
       console.log('There isn`t a controller for a node with id - ' + id);
     }
   }
-
-  public renameFFS(id: number | string) {
-    const treeController = this.treeFFS.getControllerByNodeId(id);
-    if (treeController) {
-      treeController.rename('unicode.pf');
-    } else {
-      console.log('There isn`t a controller for a node with id - ' + id);
-    }
-  }
-
-  public setChildrenFFS(id: number | string) {
+//can hlep when creating new tree
+  /*public setChildrenFFS(id: number | string) {
     const treeController = this.treeFFS.getControllerByNodeId(id);
     if (treeController && typeof treeController.setChildren === 'function') {
       treeController.setChildren([
@@ -309,7 +304,7 @@ export class AppComponent implements OnInit {
     } else {
       console.log('There isn`t a controller for a node with id - ' + id);
     }
-  }
+  }*/
 
   public addChildFFS(id: number | string, newNode: TreeModel) {
     newNode.id = ++this.lastFFSNodeId;

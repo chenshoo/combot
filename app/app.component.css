@@ -50,22 +50,5 @@
       cursor: inherit;
       color: #757575;
     }
-
-    .button {
-      border-radius: 4px;
-      box-shadow: 0 2px 4px 0 #888;
-      background-color: #fff;
-      -webkit-appearance: none;
-      border: 1px solid #000;
-      height: 35px;
-      outline: none;
-    }
-
-    .button-pressed {
-      box-shadow: 0 0 1px 0 #888;
-    }
-
-    .tree-controlls button {
-      margin: 5px;
-    }
- 
+       
+    
