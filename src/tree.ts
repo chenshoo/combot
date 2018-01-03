@@ -207,7 +207,7 @@ export class Tree {
     }
 
     tree.id = tree.id || uuidv4();
-
+    
     if (this.childrenShouldBeLoaded() && !(this.childrenAreBeingLoaded() || this.childrenWereLoaded())) {
       return null;
     }

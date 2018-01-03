@@ -20,6 +20,7 @@ export type ChildrenLoadingFunction = (callback: (children: TreeModel[]) => void
 export interface TreeModel {
   value: string | RenamableNode;
   id?: string | number;
+  Nodetype?: NodeType.Link | NodeType.Node | NodeType.Root;
   children?: TreeModel[];
   loadChildren?: ChildrenLoadingFunction;
   settings?: TreeModelSettings;
@@ -117,6 +118,12 @@ export enum TreeStatus {
   New,
   Modified,
   IsBeingRenamed
+}
+
+export enum NodeType {
+  Root ="Root",
+  Node ="Node",
+  Link ="Link" 
 }
 
 export interface RenamableNode {
