@@ -12,14 +12,13 @@ import * as TreeTypes from './tree.types';
 import { Tree } from './tree';
 import { TreeController } from './tree-controller';
 import { NodeMenuService } from './menu/node-menu.service';
-import { NodeMenuItemAction, NodeMenuItemSelectedEvent, NodeMenuAction } from './menu/menu.events';
+import { NodeMenuItemAction, NodeMenuItemSelectedEvent } from './menu/menu.events';
 import { NodeEditableEvent, NodeEditableEventAction } from './editable/editable.events';
 import { TreeService } from './tree.service';
 import * as EventUtils from './utils/event.utils';
 import { NodeDraggableEvent } from './draggable/draggable.events';
 import { Subscription } from 'rxjs/Subscription';
 import { get } from './utils/fn.utils';
-import { NodeType } from './tree.types';
 
 @Component({
   selector: 'tree-internal',
@@ -209,15 +208,6 @@ export class TreeInternalComponent implements OnInit, OnChanges, OnDestroy {
     this.tree.createNode(e.nodeMenuItemAction === NodeMenuItemAction.NewNode);
     this.isRightMenuVisible = false;
     this.isLeftMenuVisible = false;
-    
-    if(e.nodeMenuItemAction == NodeMenuItemAction.NewLink)
-      this.tree.node.Nodetype = NodeType.Link;
-      else{
-        if(e.nodeMenuItemAction == NodeMenuItemAction.NewNode)
-        {
-          this.tree.node.Nodetype = NodeType.Node;
-        }
-      }
   }
 
   private onRenameSelected(): void {
